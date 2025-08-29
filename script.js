@@ -23,3 +23,38 @@ navLinks.forEach(link => {
     navbar.classList.remove("active");
   });
 });
+
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+// card
+
+
+  const buttons = document.querySelectorAll('.read-more-btn');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const desc = button.previousElementSibling; // the description <p>
+      desc.classList.toggle('expanded');
+      button.textContent = desc.classList.contains('expanded') ? 'Show Less' : 'Read More';
+    });
+  });
