@@ -338,6 +338,51 @@ header.scrolled {
     font-weight: 900;
 }
 
+.hero {
+    position: relative;
+    overflow: hidden; /* ensures shapes don’t overflow */
+}
+
+/* Base shape style */
+.shape {
+    position: absolute;
+    opacity: 0.15; /* subtle background effect */
+    z-index: 0; /* behind content */
+}
+
+/* Circle 1 */
+.circle1 {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #007bff;
+    top: -25px;
+    left: -25px;
+}
+
+/* Circle 2 */
+.circle2 {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #ff7f50;
+    bottom: 40px;
+    right: 40px;
+}
+
+/* Triangle */
+.triangle1 {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 100px solid #00c851;
+    top: 70%;
+    left: 40%;
+    transform: translate(-50%, -50%) rotate(25deg);
+}
+
+
 @media (min-width: 768px) {
     .hero__section--bottom {
         text-align: left;
