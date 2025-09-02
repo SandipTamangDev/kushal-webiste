@@ -69,7 +69,7 @@ h3 {
 header {
     background-color: transparent;
     z-index: 1;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -86,11 +86,11 @@ header {
     height: 60px;
 }
 
-header.scrolled {
+/* header.scrolled {
     background-color: #fff;
     transition: background-color 0.3s ease;
     opacity: 0.9;
-}
+} */
 
 
 .desktop-nav-links, .navbar  {
@@ -176,6 +176,10 @@ header.scrolled {
 .nav-links a:hover {
     padding: 0.6em;
     color: #333;
+}
+
+.btn-icons-desktop {
+    display: none;
 }
 
 
@@ -340,47 +344,60 @@ header.scrolled {
 
 .hero {
     position: relative;
-    overflow: hidden; /* ensures shapes don’t overflow */
+    overflow: hidden;
 }
 
-/* Base shape style */
+/* Base shape */
 .shape {
     position: absolute;
-    opacity: 0.15; /* subtle background effect */
-    z-index: 0; /* behind content */
+    opacity: 0.15;
+    z-index: 0;
 }
 
-/* Circle 1 */
+/* Big Circle */
 .circle1 {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     background: #007bff;
-    top: -25px;
-    left: -25px;
+    top: -50px;
+    left: -50px;
 }
 
-/* Circle 2 */
-.circle2 {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: #ff7f50;
-    bottom: 40px;
-    right: 40px;
-}
-
-/* Triangle */
+/* Triangle pointing toward name */
 .triangle1 {
     width: 0;
     height: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 100px solid #00c851;
-    top: 70%;
-    left: 40%;
-    transform: translate(-50%, -50%) rotate(25deg);
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 80px solid #00c851;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%) rotate(20deg);
 }
+
+/* Small dots background */
+.dots1 {
+    width: 4px;
+    height: 4px;
+    background: #ff7f50;
+    border-radius: 50%;
+    top: 20%;
+    left: 70%;
+    box-shadow: 20px 40px #ff7f50, -30px 60px #ff7f50, 40px 10px #ff7f50;
+}
+
+/* Soft blob behind text */
+.blob1 {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, #ff7f50, #ffb347);
+    border-radius: 50% 40% 60% 50%;
+    top: 60%;
+    left: 30%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+}
+
 
 
 @media (min-width: 768px) {
@@ -403,6 +420,74 @@ header.scrolled {
     }
 }
 
+
+
+.tech-stack__container {
+    position: relative;
+    padding: 60px 20px;
+}
+
+/* Base style for shapes */
+.tech-shape {
+    position: absolute;
+    opacity: 0.1;
+    z-index: 0; /* behind all content */
+}
+
+/* Top-left circle */
+.circle1 {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #007bff;
+    top: -30px;
+    left: -30px;
+}
+
+/* Bottom-right circle */
+.circle2 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #ff7f50;
+    bottom: -20px;
+    right: -20px;
+}
+
+/* Top-right triangle */
+.triangle1 {
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 50px solid #00c851;
+    top: -20px;
+    right: 10%;
+    transform: rotate(15deg);
+}
+
+/* Bottom-left triangle */
+.triangle2 {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 40px solid #ffcc00;
+    bottom: 10%;
+    left: 5%;
+    transform: rotate(-10deg);
+}
+
+/* Blob behind header */
+.blob1 {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #ff7f50, #ffb347);
+    border-radius: 50% 40% 60% 50%;
+    top: 20px;
+    left: 60%;
+    transform: rotate(-20deg);
+}
 
 
 
@@ -433,25 +518,23 @@ header.scrolled {
 }
 
 .tech-stack__techs {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  gap: 6em; /* add spacing if you want */
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 6em; /* add spacing if you want */
 }
 
 
 .tech-stack__techs li {
-  display: block; /* no flex needed */
-  width: 70px;
+    display: block; /* no flex needed */
+    width: 70px;
 }
 
 .tech-stack__techs img {
-  width: 100%;  /* or 50%, 60% depending on what looks right */
-  height: auto;
-  display: block;
+    width: 100%;  /* or 50%, 60% depending on what looks right */
+    height: auto;
+    display: block;
 }
-
-
 
 
 .tech-stack__title {
@@ -484,7 +567,7 @@ header.scrolled {
 .project-card {
     color: #333;
     border-radius: 5px;
-    padding: 1.25em;
+    /* padding: 1.25em; */
     margin-bottom: 1.25em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transform: translate(5px, 0);
@@ -492,11 +575,33 @@ header.scrolled {
 
 }
 
-.por
+.project-card__content {
+    padding: 1.25em;
+}
+
+.project-card__links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
 
 .project-card:hover {
     background-color: var(--color-primary-dark);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.projects .link {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    text-decoration: underline;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.projects .link:hover {
+    background-color: var(--color-primary-dark);
 }
 
 @media(min-width: 768px) {
@@ -531,15 +636,88 @@ header.scrolled {
     width: 100%;
 }
 
+.footer__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2em;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.footer__contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    flex-direction: column;
+}
+
+.footer__socials {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
 .footer__container {
     width: 90%;
     margin: 0 auto;
 }
 
+.footer__bottom {
+    padding-top: 2em;
+    color: #666;
+}
+
+.footer__nav-links {
+    border-top: 1px solid #eee;
+}
+
+@media (min-width: 768px) {
+    .footer__top {
+        flex-direction: row;
+        gap: 2em;
+    }
+
+    .footer__contact {
+        flex-direction: row;
+        gap: 2em;
+    }
+
+    .footer__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footer__nav-links {
+        padding: 0;
+        border-top: none;
+        display: flex;
+        gap: 2em
+    }
+
+    .footer__nav-links a {
+        white-space: nowrap;
+    }
+
+
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+
+
+
+
+
 .project-card__description {
-  max-height: 60px; /* show only a few lines */
-  overflow: hidden;
-  transition: max-height 0.3s ease;
+    max-height: 60px; /* show only a few lines */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
 .project-card__description.expanded {
