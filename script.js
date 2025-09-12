@@ -47,14 +47,15 @@ window.addEventListener("scroll", () => {
 
 
 // card
+  // const buttons = document.querySelectorAll('.read-more-btn');
+
+  // buttons.forEach(button => {
+  //   button.addEventListener('click', () => {
+  //     const desc = button.previousElementSibling; // the description <p>
+  //     desc.classList.toggle('expanded');
+  //     button.textContent = desc.classList.contains('expanded') ? 'Show Less' : 'Read More';
+  //   });
+  // });
 
 
-  const buttons = document.querySelectorAll('.read-more-btn');
 
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const desc = button.previousElementSibling; // the description <p>
-      desc.classList.toggle('expanded');
-      button.textContent = desc.classList.contains('expanded') ? 'Show Less' : 'Read More';
-    });
-  });
