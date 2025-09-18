@@ -59,3 +59,39 @@ window.addEventListener("scroll", () => {
 
 
 
+const aboutContainer = document.getElementById('about-section');
+        const timelineSections = document.querySelectorAll('.timeline-section');
+        const sidebarItems = document.querySelectorAll('.sidebar-item');
+
+        const options = {
+            root: null, // use the viewport as the root
+            rootMargin: '0px',
+            threshold: 0.5 // trigger when 50% of the item is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const sidebarItem = document.querySelector(`.sidebar-item[data-section="${id}"]`);
+
+                if (entry.isIntersecting) {
+                    // Remove 'active' class from all sidebar items
+                    sidebarItems.forEach(item => item.classList.remove('active'));
+                    // Add 'active' class to the current one
+                    sidebarItem.classList.add('active');
+                }
+            });
+        }, options);
+
+        timelineSections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Optional: Smooth scroll on sidebar item click
+        sidebarItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const targetId = e.currentTarget.getAttribute('data-section');
+                const targetSection = document.getElementById(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });

@@ -15,11 +15,11 @@
 
       <div class="nav-group">
           <ul class="desktop-nav-links nav-links">
-            <li><a id="active" href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="tech.html">Tech Stack</a></li>
-            <li><a href="project.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a id="active" href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#tech-stack">Tech Stack</a></li>
+            <li><a href="#project">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
 
           <div>
@@ -104,6 +104,7 @@
     </div>
   </nav>
 
+  <main>
   <!-- Hero -->
   <section id="hero" class="hero">
     <div class="hero__container container">
@@ -120,6 +121,43 @@
 
       </div>
   </section>
+
+    <section id="about" >
+      <div class="about__container container">
+        <div class="sidebar">
+            <div class="sidebar-content">
+                <p>A simple tagline</p>
+                <h1>Our Journey, Our Impact.</h1>
+                <p>This is where you can write a compelling, high-level overview of your company or project. This text remains static while the user scrolls through the timeline details on the right.</p>
+                <a href="#link1" class="cta-button">Learn More</a>
+                <a href="#link2" class="cta-button secondary">Contact Us</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="section1" class="timeline-section">
+                <h2>The Beginning</h2>
+                <p>This is the detailed content for the first timeline point. You can add images, more paragraphs, and custom styling here. The height of this section is what determines the scroll-pinning effect.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div id="section2" class="timeline-section">
+                <h2>A New Chapter</h2>
+                <p>This section details our second milestone. As you scroll, the left sidebar remains in place, creating a consistent anchor point for the user's attention. </p>
+                <p>This is where our journey truly began. We took a leap of faith and... [Your content here].</p>
+            </div>
+            <div id="section3" class="timeline-section">
+                <h2>Expanding Horizons</h2>
+                <p>Here you can describe the challenges and successes of our growth phase. This is the third point on our timeline.</p>
+                <p>Content about growth, expansion, and development. You can add images, lists, or any other elements to make your story engaging.</p>
+            </div>
+            <div id="section4" class="timeline-section">
+                <h2>What's Next</h2>
+                <p>This is the final section of our timeline, where we talk about what's next. Once you scroll past this, the "About" section will un-pin and the regular page scroll will continue.</p>
+                <p>Looking ahead, we are excited to... [Your future plans].</p>
+            </div>
+        </div>
+      </div>
+    </section>
 
 <section class="tech-stack" id="tech-stack">
   <div class="tech-stack__container container">
@@ -156,8 +194,6 @@
         </li>
       </ul>
     </div>
-
-
   </div>
 </section>
 
@@ -175,8 +211,12 @@
       <!-- Project Card 1 -->
       <div class="project-card">
         <div class="project-card__image">
-          <img src="assets/project/Rectangle 18.png" alt="Calculator App" width="100%">
+          <video autoplay loop muted playsinline>
+            <source src="assets/video/video_1.mp4" type="video/mp4" width="auto" height="auto">
+            Your browser does not support the video tag.
+          </video>
         </div>
+
         <div class="project-card__content">
           <h3 class="project-card__title">Calculator</h3>
           <p class="project-card__description">
@@ -184,11 +224,6 @@
           </p>
           <p class="project-card__techs"><strong>Tech Stack:</strong> HTML, CSS, JavaScript</p>
           <div class="project-card__links">
-            <a class="link live-link" href="https://live-demo-link.com" target="_blank">
-              <img src="assets/icons/akar-icons_link-chain.svg" alt="Live Preview Icon">
-              Live Preview
-            </a>
-
             <a class="link code-link" href="https://github.com/yourusername/calculator" target="_blank">
               <img src="assets/icons/akar-icons_github-fill.svg" alt="GitHub Icon">
               View Code
@@ -201,7 +236,7 @@
       <!-- Project Card 2 -->
       <div class="project-card">
         <div class="project-card__image">
-          <img src="assets/project/Rectangle 18.png" alt="Calculator App" width="100%">
+          <!-- <img src="assets/project/Rectangle 18.png" alt="Calculator App" width="100%"> -->
         </div>
         <div class="project-card__content">
           <h3 class="project-card__title">Weather App</h3>
@@ -210,10 +245,6 @@
           </p>
           <p class="project-card__techs"><strong>Tech Stack:</strong> HTML, CSS, JavaScript, API</p>
           <div class="project-card__links">
-            <a class="link live-link" href="https://live-demo-link.com" target="_blank">
-              <img src="assets/icons/akar-icons_link-chain.svg" alt="Live Preview Icon">
-              Live Preview
-            </a>
 
             <a class="link code-link" href="https://github.com/yourusername/calculator" target="_blank">
               <img src="assets/icons/akar-icons_github-fill.svg" alt="GitHub Icon">
@@ -226,7 +257,7 @@
 
           <div class="project-card">
         <div class="project-card__image">
-          <img src="assets/project/Rectangle 18.png" alt="Calculator App" width="100%">
+            
         </div>
         <div class="project-card__content">
           <h3 class="project-card__title">Weather App</h3>
@@ -235,10 +266,6 @@
           </p>
           <p class="project-card__techs"><strong>Tech Stack:</strong> HTML, CSS, JavaScript, API</p>
           <div class="project-card__links">
-            <a class="link live-link" href="https://live-demo-link.com" target="_blank">
-              <img src="assets/icons/akar-icons_link-chain.svg" alt="Live Preview Icon">
-              Live Preview
-            </a>
 
             <a class="link code-link" href="https://github.com/yourusername/calculator" target="_blank">
               <img src="assets/icons/akar-icons_github-fill.svg" alt="GitHub Icon">
@@ -254,6 +281,26 @@
   </div>
 </section>
 
+
+
+    <section id="contact" class="contact">
+        <div class="contact__container container">
+            <div class="contact__header">
+                <h3>Get in Touch</h3>
+                <h1>Have a Question? Let's Talk.</h1>
+                <p>We'd love to hear from you! Fill out the form below, and we'll get back to you as soon as possible.</p>
+            </div>
+            <form action="#" class="contact__form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="contact__submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+
+</main>
 
 
 
