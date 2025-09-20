@@ -1,6 +1,8 @@
+
+// Mobile Menu Toggle
 const menuToggle = document.getElementById("menu-toggle");
 const navbar = document.querySelector(".navbar");
-const navLinks = document.querySelectorAll(".mobile-nav-links a");
+const mobileNavLinks = document.querySelectorAll(".mobile-nav-links a");
 
 // Toggle on click
 menuToggle.addEventListener("click", () => {
@@ -17,13 +19,14 @@ window.addEventListener("resize", () => {
 });
 
 // Close on link click
-navLinks.forEach(link => {
+mobileNavLinks.forEach(link => {
   link.addEventListener("click", () => {
     menuToggle.classList.remove("active");
     navbar.classList.remove("active");
   });
 });
 
+// Header Scroll Effect
 const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
@@ -46,18 +49,10 @@ window.addEventListener("scroll", () => {
 
 
 
-// card
-  // const buttons = document.querySelectorAll('.read-more-btn');
-
-  // buttons.forEach(button => {
-  //   button.addEventListener('click', () => {
-  //     const desc = button.previousElementSibling; // the description <p>
-  //     desc.classList.toggle('expanded');
-  //     button.textContent = desc.classList.contains('expanded') ? 'Show Less' : 'Read More';
-  //   });
-  // });
 
 
+
+// Intersection Observer for Timeline Sections
 
 const aboutContainer = document.getElementById('about-section');
         const timelineSections = document.querySelectorAll('.timeline-section');
@@ -95,3 +90,184 @@ const aboutContainer = document.getElementById('about-section');
                 targetSection.scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+
+
+
+
+
+// A simple array of objects to store your project data
+const projects = [
+  {
+    title: "Calculator",
+    description: "A simple calculator built with HTML, CSS, and JavaScript.",
+    techStack: "HTML, CSS, JavaScript",
+    media: {
+      type: "video",
+      src: "assets/video/video_1.mp4"
+    },
+    githubLink: "https://github.com/yourusername/calculator"
+  },
+  {
+    title: "Weather App",
+    description: "A weather app that fetches data from an API to display current weather details of different locations.",
+    techStack: "HTML, CSS, JavaScript, API",
+    media: {
+      type: "video",
+      src: "assets/video/video_1.mp4"
+    },
+    githubLink: "https://github.com/yourusername/weather-app"
+  },
+  // Add more projects here
+  {
+    title: "Project 3",
+    description: "Description for Project 3.",
+    techStack: "HTML, CSS, JavaScript, React",
+    media: {
+      type: "video",
+      src: "assets/video/video_1.mp4"
+    },
+    githubLink: "https://github.com/yourusername/project3"
+  }
+];
+
+// Get the container element where cards will be placed
+const cardContainer = document.querySelector('.card-container');
+
+// A function to create the HTML for a single project card
+const createProjectCard = (project) => {
+  // Create the main card div
+  const card = document.createElement('div');
+  card.classList.add('project-card');
+
+  // Create the media container (video or image)
+  const mediaContainer = document.createElement('div');
+  mediaContainer.classList.add('project-card__image');
+
+  // Check the media type and create the appropriate element
+  let mediaElement;
+  if (project.media.type === 'video') {
+    mediaElement = document.createElement('video');
+    mediaElement.autoplay = true;
+    mediaElement.loop = true;
+    mediaElement.muted = true;
+    mediaElement.playsinline = true;
+    const source = document.createElement('source');
+    source.src = project.media.src;
+    source.type = "video/mp4";
+    mediaElement.appendChild(source);
+  } else {
+    mediaElement = document.createElement('img');
+    mediaElement.src = project.media.src;
+    mediaElement.alt = project.title + " app";
+  }
+  
+  mediaContainer.appendChild(mediaElement);
+
+  // Create the content container
+  const content = document.createElement('div');
+  content.classList.add('project-card__content');
+
+  // Create and add the title
+  const title = document.createElement('h3');
+  title.classList.add('project-card__title');
+  title.textContent = project.title;
+  content.appendChild(title);
+
+  // Create and add the description
+  const description = document.createElement('p');
+  description.classList.add('project-card__description');
+  description.textContent = project.description;
+  content.appendChild(description);
+
+  // Create and add the tech stack
+  const techStack = document.createElement('p');
+  techStack.classList.add('project-card__techs');
+  techStack.innerHTML = `<strong>Tech Stack:</strong> ${project.techStack}`;
+  content.appendChild(techStack);
+
+  // Create and add the links section
+  const links = document.createElement('div');
+  links.classList.add('project-card__links');
+  
+  // Create and add the GitHub link
+  const githubLink = document.createElement('a');
+  githubLink.classList.add('link', 'code-link');
+  githubLink.href = project.githubLink;
+  githubLink.target = "_blank";
+  
+  const githubIcon = document.createElement('img');
+  githubIcon.src = "assets/icons/akar-icons_github-fill.svg";
+  githubIcon.alt = "GitHub Icon";
+  
+  githubLink.appendChild(githubIcon);
+  githubLink.innerHTML += " View Code";
+  
+  links.appendChild(githubLink);
+  content.appendChild(links);
+
+  // Append all parts to the main card
+  card.appendChild(mediaContainer);
+  card.appendChild(content);
+
+  return card;
+};
+
+// Loop through the projects array and append each card to the container
+projects.forEach(project => {
+  const newCard = createProjectCard(project);
+  cardContainer.appendChild(newCard);
+});
+
+
+
+
+
+// Select all sections and nav links
+const sections = document.querySelectorAll('section[id]');
+const DesktnavLinks = document.querySelectorAll('.desktop-nav-links a');
+
+// Function to update the active nav link on scroll
+function updateActiveNavLink() {
+  let currentSection = '';
+
+  // Loop through sections to find the one currently in view
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+
+    // Check if the current scroll position is within the section's bounds
+    // Adjust the `200` value to control when the active class changes
+    if (window.scrollY >= sectionTop - sectionHeight / 3) {
+      currentSection = section.getAttribute('id');
+    }
+  });
+
+  // Remove active class from all nav links
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+
+  // Add active class to the corresponding nav link
+  if (currentSection) {
+    const activeLink = document.querySelector(`.desktop-nav-links a[href="#${currentSection}"]`);
+    if (activeLink) {
+      activeLink.classList.add('active');
+    }
+  } else {
+    // If at the very top, make sure the "Home" link is active
+    const homeLink = document.querySelector('.desktop-nav-links a[href="#hero"]');
+    if (homeLink) {
+      homeLink.classList.add('active');
+    }
+  }
+}
+
+// Add an event listener to the window for the scroll event
+window.addEventListener('scroll', updateActiveNavLink);
+
+// Initial check on page load to set the first active link
+document.addEventListener('DOMContentLoaded', () => {
+  updateActiveNavLink();
+});
+

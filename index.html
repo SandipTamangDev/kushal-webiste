@@ -15,11 +15,11 @@
 
       <div class="nav-group">
           <ul class="desktop-nav-links nav-links">
-            <li><a id="active" href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#tech-stack">Tech Stack</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a class="desktop-nav-links" href="#hero">Home</a></li>
+            <li><a class="desktop-nav-links" href="#about">About</a></li>
+            <li><a class="desktop-nav-links" href="#tech-stack">Tech Stack</a></li>
+            <li><a class="desktop-nav-links" href="#projects">Projects</a></li>
+            <li><a class="desktop-nav-links" href="#contact">Contact</a></li>
           </ul>
 
           <div>
@@ -68,7 +68,7 @@
   <nav class="navbar">
     <div class="navbar__container container">
       <ul class="mobile-nav-links nav-links">
-        <li><a id="active" href="#hero">Home</a></li>
+        <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#tech-stack">Tech stack</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -106,7 +106,7 @@
 
   <main>
   <!-- Hero -->
-  <section id="hero" class="hero">
+  <section id="hero" class="hero section">
     <div class="hero__container container">
 
         <div class="hero__section hero__section--top">
@@ -118,47 +118,46 @@
             <h1>Hi 👋, <br> My name is <br> <span class="name">Kushal Bhattarai</span> <br> I build things for the web.</h1>
           </div>
         </div>
-
       </div>
   </section>
 
-    <section id="about" >
-      <div class="about__container container">
+      <div class="hero-decoration hero-circle-1"></div>
+      <div class="hero-decoration hero-triangle-1"></div>
+      <div class="hero-decoration hero-square-1"></div>
+
+    <section id="about" class="about section">
+    <div class="about__container container">
         <div class="sidebar">
             <div class="sidebar-content">
-                <h2 class="title">Our Journey, Our Impact.</h2>
-                <p class="subtitle">This is where you can write a compelling, high-level overview of your company or project. This text remains static while the user scrolls through the timeline details on the right.</p>
-                <a href="#link1" class="cta-button">Learn More</a>
-                <a href="#link2" class="cta-button secondary">Contact Us</a>
+                <h2 class="title">My Journey in Code.</h2>
+                <p class="subtitle">From my first line of code to my latest project, this is a look at my path in software development. Each step has helped me grow and learn.</p>
+                <a class="btn" href="#link1" class="cta-button">Learn More</a>
+                <a class="btn" href="#link2" class="cta-button secondary">Contact Me</a>
             </div>
         </div>
 
         <div class="main-content">
             <div id="section1" class="timeline-section">
                 <h3>The Beginning</h3>
-                <p>This is the detailed content for the first timeline point. You can add images, more paragraphs, and custom styling here. The height of this section is what determines the scroll-pinning effect.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>My journey into programming began when I discovered... [Your story about starting to code].</p>
             </div>
             <div id="section2" class="timeline-section">
                 <h3>A New Chapter</h3>
-                <p>This section details our second milestone. As you scroll, the left sidebar remains in place, creating a consistent anchor point for the user's attention. </p>
-                <p>This is where our journey truly began. We took a leap of faith and... [Your content here].</p>
+                <p>This is a major milestone in my career, like my first professional role or a significant freelance project. [Details about this milestone].</p>
             </div>
             <div id="section3" class="timeline-section">
                 <h3>Expanding Horizons</h3>
-                <p>Here you can describe the challenges and successes of our growth phase. This is the third point on our timeline.</p>
-                <p>Content about growth, expansion, and development. You can add images, lists, or any other elements to make your story engaging.</p>
+                <p>I expanded my skills by learning new technologies and frameworks such as... [Mention new skills and projects].</p>
             </div>
             <div id="section4" class="timeline-section">
                 <h3>What's Next</h3>
-                <p>This is the final section of our timeline, where we talk about what's next. Once you scroll past this, the "About" section will un-pin and the regular page scroll will continue.</p>
-                <p>Looking ahead, we are excited to... [Your future plans].</p>
+                <p>I'm now focused on... [Your future plans, for example, specializing in a specific area or looking for new challenges].</p>
             </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-<section class="tech-stack" id="tech-stack">
+<section class="tech-stack section" id="tech-stack">
   <div class="tech-stack__container container">
 
     <div class="tech-stack__header">
@@ -197,96 +196,24 @@
 </section>
 
 
-<section id="projects" class="projects">
-  <div class="projects__container container">
-
-    <div class="projects__header">
-      <h2 class="title">Projects</h2>
-      <p class="subtitle">Things I’ve built so far</p>
-    </div>
-
-    <div class="card-container">
-
-      <!-- Project Card 1 -->
-      <div class="project-card">
-        <div class="project-card__image">
-          <video autoplay loop muted playsinline>
-            <source src="assets/video/video_1.mp4" type="video/mp4" width="auto" height="auto">
-            Your browser does not support the video tag.
-          </video>
+    <section id="projects" class="projects section">
+      <div class="projects__container container">
+        <div class="projects__header">
+          <h2 class="title">Projects</h2>
+          <p class="subtitle">Things I’ve built so far</p>
         </div>
-
-        <div class="project-card__content">
-          <h3 class="project-card__title">Calculator</h3>
-          <p class="project-card__description">
-            A weather app that fetches data from an API to display current weather details of different locations.
-          </p>
-          <p class="project-card__techs"><strong>Tech Stack:</strong> HTML, CSS, JavaScript</p>
-          <div class="project-card__links">
-            <a class="link code-link" href="https://github.com/yourusername/calculator" target="_blank">
-              <img src="assets/icons/akar-icons_github-fill.svg" alt="GitHub Icon">
-              View Code
-            </a>
+        <div class="card-container">
           </div>
-
-        </div>
       </div>
-
-      <!-- Project Card 2 -->
-      <div class="project-card">
-        <div class="project-card__image">
-          <!-- <img src="assets/project/Rectangle 18.png" alt="Calculator App" width="100%"> -->
-        </div>
-        <div class="project-card__content">
-          <h3 class="project-card__title">Weather App</h3>
-          <p class="project-card__description">
-            A weather app that fetches data from an API to display current weather details of different locations.
-          </p>
-          <p class="project-card__techs"><strong>Tech Stack:</strong> HTML, CSS, JavaScript, API</p>
-          <div class="project-card__links">
-
-            <a class="link code-link" href="https://github.com/yourusername/calculator" target="_blank">
-              <img src="assets/icons/akar-icons_github-fill.svg" alt="GitHub Icon">
-              View Code
-            </a>
-          </div>
-        </div>
-      </div>
-
-
-          <div class="project-card">
-        <div class="project-card__image">
-            
-        </div>
-        <div class="project-card__content">
-          <h3 class="project-card__title">Weather App</h3>
-          <p class="project-card__description">
-            A weather app that fetches data from an API to display current weather details of different locations.
-          </p>
-          <p class="project-card__techs"><strong>Tech Stack:</strong> HTML, CSS, JavaScript, API</p>
-          <div class="project-card__links">
-
-            <a class="link code-link" href="https://github.com/yourusername/calculator" target="_blank">
-              <img src="assets/icons/akar-icons_github-fill.svg" alt="GitHub Icon">
-              View Code
-            </a>
-          </div>
-        </div>
-      </div>
-
-      
-
-    </div>
-  </div>
-</section>
+    </section>
 
 
 
-    <section id="contact" class="contact">
+    <section id="contact" class="contact section">
         <div class="contact__container container">
             <div class="contact__header">
-                <h2 class="title">Have a Question? Let's Talk.</h2>
-                <p class="subtitle">We'd love to hear from you! Fill out the form below, and we'll get back to you as soon as possible.</p>
+                <h2 class="title">Let's Build Something Great Together.</h2>
+                <p class="subtitle">I'm always open to discussing new projects, collaboration opportunities, or full-time roles. Get in touch, and let's start a conversation.</p>
             </div>
             <form action="#" class="contact__form">
                 <input type="text" name="name" placeholder="Your Name" required>
@@ -296,8 +223,6 @@
             </form>
         </div>
     </section>
-
-
 </main>
 
 
