@@ -9,6 +9,15 @@ menuToggle.addEventListener("click", () => {
   navbar.classList.toggle("active");     // toggle nav links
 });
 
+// screen light blur when menu is active
+menuToggle.addEventListener("click", () => {
+  if (navbar.classList.contains("active")) {
+    document.body.classList.add("blurred");
+  } else {
+    document.body.classList.remove("blurred");
+  }
+});
+
 // Auto-close on resize above 768px
 window.addEventListener("resize", () => {
   if (window.innerWidth > 768) {
@@ -218,3 +227,38 @@ projects.forEach(project => {
 
 
 
+// Get all the sections with an ID
+const sections = document.querySelectorAll('section[id]');
+// Get all the desktop navigation links
+const desktopNavLinks = document.querySelectorAll('.desktop-nav-links a');
+
+// Function to handle the active state
+function activateNavLink() {
+    // Get the current scroll position
+    const scrollY = window.pageYOffset;
+
+    // Loop through each section
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 60; // Adjust for the fixed header height
+        const sectionId = current.getAttribute('id');
+
+        // Check if the current scroll position is within a section
+        if (
+            scrollY > sectionTop &&
+            scrollY <= sectionTop + sectionHeight
+        ) {
+            // Remove 'active' class from all links
+            desktopNavLinks.forEach(link => link.classList.remove('active'));
+
+            // Add 'active' class to the link that matches the current section's ID
+            document.querySelector('.desktop-nav-links a[href*=' + sectionId + ']').classList.add('active');
+        }
+    });
+}
+
+// Attach the function to the scroll event
+window.addEventListener('scroll', activateNavLink);
+
+// Run the function on page load to set the initial active link
+document.addEventListener('DOMContentLoaded', activateNavLink);

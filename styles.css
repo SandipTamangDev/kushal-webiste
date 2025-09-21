@@ -55,7 +55,7 @@ h2 {
 
 
 h1 {
-    font-size: clamp(30px, 10vw, 48px);
+    font-size: clamp(30px, 8vw, 48px);
     letter-spacing: -2%;
     line-height: 1;
 }
@@ -150,8 +150,6 @@ section {
 
 
 
-
-
 main {
     max-width: 1440px;
     margin: 0 auto;
@@ -184,7 +182,26 @@ main {
 
 
 
+/* ... in your global CSS section, outside of any media queries ... */
 
+.desktop-nav-links a {
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  color: var(--primary-txt-color);
+  white-space: nowrap;
+  padding: 0.2em 0;
+  /* Use a transparent border to prevent layout shift on hover/active */
+  border-bottom: 2px solid transparent; 
+}
+
+/* Correct rule for hover and active states */
+.desktop-nav-links a:hover,
+.desktop-nav-links a.active {
+    border-bottom: 2px solid #fff;
+}
+
+/* ... your other desktop media queries for layout can remain the same ... */
 
 
 
@@ -433,13 +450,13 @@ header {
         display: none;
     }
 
-    #active {
+    /* #active {
         border-bottom: 2px solid #fff;
     }
 
     .active {
         border-bottom: 2px solid #fff;
-    }
+    } */
 
     .desktop-nav-links a {
         text-decoration: none;
@@ -528,10 +545,8 @@ header {
 /* hero */
 
 .hero {
-    height: 100vh;
     display: flex;
     width: 100%;
-    padding-top: 80px;
 }
 
 .hero__section {
@@ -544,6 +559,7 @@ header {
     flex-direction: column;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     margin: 0 auto;
     gap: 3em;
 }
@@ -571,7 +587,7 @@ header {
 
 
 .hero__section img {
-    width: clamp(200px, 40vw, 320px);
+    width: clamp(150px, 50vw, 320px);
     height: auto;
     border-radius: 50%;
     display: block;
@@ -949,10 +965,9 @@ header {
     color: #333;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.projects .link:hover {
-    background-color: var(--color-primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
 }
 
 @media(min-width: 768px) {
@@ -1186,6 +1201,11 @@ header {
 .footer__bottom {
     padding-top: 2em;
     color: #666;
+    text-align: center;
+}
+
+.footer__credit {
+    width: 100%;
 }
 
 .footer__nav-links {
