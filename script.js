@@ -60,6 +60,7 @@ window.addEventListener("scroll", () => {
 });
 
 
+
 // Intersection Observer for Timeline Sections
 
 const aboutContainer = document.getElementById('about-section');
