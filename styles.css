@@ -304,14 +304,10 @@ header {
     position: relative;
     top: 70px;
     right: 10px;
+    height: 270px;
     bottom: 0;
+    border-radius: 1.5em;
 }
-
-/* @media (min-width: 768px) {
-    .navbar {
-        right: 0rem;
-    }
-} */
 
 .mobile-nav-links {
     position: relative;
@@ -1235,39 +1231,79 @@ footer hr {
 
 
 
-.hero-circle-1 {
-    position: absolute;
-    max-width: 400px;
-    max-height: 400px;
-    min-height: 100px;
-    min-width: 100px;
-    background-color: rgba(255, 255, 255, 0.1);
+/* Container for the bubbles */
+.bubbles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Hides parts of bubbles that go off-screen */
+  z-index: -1;
+}
+
+/* Common styles for the bubbles */
+.bubbles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  bottom: -150px; /* Start below the viewport */
+  
+  animation: rise 25s infinite;
+}
+
+/* Individual bubble animations for a staggered effect */
+.bubbles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.bubbles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.bubbles li:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.bubbles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.bubbles li:nth-child(5) {
+  left: 65%;
+  width: 40px;
+  height: 40px;
+  animation-delay: 3s;
+  animation-duration: 7s;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
     border-radius: 50%;
-    top: 20px;
-    left: 5%;
-    z-index: 0;
+  }
 }
 
-.hero-triangle-1 {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 173.2px solid rgba(255, 255, 255, 0.1); /* height = sqrt(3)/2 * base */
-    top: 10px;
-    right: 10%;
-    z-index: 0;
-    rotate: 100deg;
-}
 
-.hero-square-1 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: rgba(255, 255, 255, 0.1);
-    top: 50%;
-    left: 40%;
-    bottom: 20%;
-    z-index: 0;
-}
+

@@ -1,4 +1,3 @@
-
 // Mobile Menu Toggle
 const menuToggle = document.getElementById("menu-toggle");
 const navbar = document.querySelector(".navbar");
@@ -18,12 +17,26 @@ window.addEventListener("resize", () => {
   }
 });
 
+// Auto-close on scroll
+window.addEventListener("scroll", () => {
+  menuToggle.classList.remove("active");
+  navbar.classList.remove("active");
+});
+
 // Close on link click
 mobileNavLinks.forEach(link => {
   link.addEventListener("click", () => {
     menuToggle.classList.remove("active");
     navbar.classList.remove("active");
   });
+});
+
+//close on clicking outside the menu
+document.addEventListener("click", (event) => {
+  if (!navbar.contains(event.target) && !menuToggle.contains(event.target)) {
+    menuToggle.classList.remove("active");
+    navbar.classList.remove("active");
+  }
 });
 
 // Header Scroll Effect
@@ -36,20 +49,6 @@ window.addEventListener("scroll", () => {
     header.classList.remove("scrolled");
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Intersection Observer for Timeline Sections
@@ -90,10 +89,6 @@ const aboutContainer = document.getElementById('about-section');
                 targetSection.scrollIntoView({ behavior: 'smooth' });
             });
         });
-
-
-
-
 
 
 // A simple array of objects to store your project data
@@ -222,52 +217,4 @@ projects.forEach(project => {
 
 
 
-
-// Select all sections and nav links
-const sections = document.querySelectorAll('section[id]');
-const DesktnavLinks = document.querySelectorAll('.desktop-nav-links a');
-
-// Function to update the active nav link on scroll
-function updateActiveNavLink() {
-  let currentSection = '';
-
-  // Loop through sections to find the one currently in view
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-
-    // Check if the current scroll position is within the section's bounds
-    // Adjust the `200` value to control when the active class changes
-    if (window.scrollY >= sectionTop - sectionHeight / 3) {
-      currentSection = section.getAttribute('id');
-    }
-  });
-
-  // Remove active class from all nav links
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-  });
-
-  // Add active class to the corresponding nav link
-  if (currentSection) {
-    const activeLink = document.querySelector(`.desktop-nav-links a[href="#${currentSection}"]`);
-    if (activeLink) {
-      activeLink.classList.add('active');
-    }
-  } else {
-    // If at the very top, make sure the "Home" link is active
-    const homeLink = document.querySelector('.desktop-nav-links a[href="#hero"]');
-    if (homeLink) {
-      homeLink.classList.add('active');
-    }
-  }
-}
-
-// Add an event listener to the window for the scroll event
-window.addEventListener('scroll', updateActiveNavLink);
-
-// Initial check on page load to set the first active link
-document.addEventListener('DOMContentLoaded', () => {
-  updateActiveNavLink();
-});
 
