@@ -545,6 +545,7 @@ header {
 /* hero */
 
 .hero {
+    padding-top: 80px;
     display: flex;
     width: 100%;
 }
