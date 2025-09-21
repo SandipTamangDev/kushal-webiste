@@ -160,6 +160,15 @@ const createProjectCard = (project) => {
     source.src = project.media.src;
     source.type = "video/mp4";
     mediaElement.appendChild(source);
+
+    // Add the event listener to handle iOS playback
+    mediaElement.addEventListener('loadeddata', () => {
+      mediaElement.play().catch(error => {
+        // Log the error but don't let it break the script
+        console.log('Autoplay prevented:', error);
+      });
+    });
+
   } else {
     mediaElement = document.createElement('img');
     mediaElement.src = project.media.src;
