@@ -61,38 +61,6 @@ window.addEventListener("scroll", () => {
 
 
 
-// Intersection Observer for Timeline Sections
-
-const aboutContainer = document.getElementById('about-section');
-const timelineSections = document.querySelectorAll('.timeline-section');
-const sidebarItems = document.querySelectorAll('.sidebar-item');
-
-const options = {
-    root: null, // use the viewport as the root
-    rootMargin: '0px',
-    threshold: 0.5 // trigger when 50% of the item is visible
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        const id = entry.target.getAttribute('id');
-        const sidebarItem = document.querySelector(`.sidebar-item[data-section="${id}"]`);
-
-        // Add this check to prevent the error
-        if (sidebarItem && entry.isIntersecting) {
-            // Remove 'active' class from all sidebar items
-            sidebarItems.forEach(item => item.classList.remove('active'));
-            // Add 'active' class to the current one
-            sidebarItem.classList.add('active');
-        }
-    });
-}, options);
-
-timelineSections.forEach(section => {
-    observer.observe(section);
-});
-
-
 // A simple array of objects to store your project data
 const projects = [
   {
