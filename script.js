@@ -64,41 +64,33 @@ window.addEventListener("scroll", () => {
 // Intersection Observer for Timeline Sections
 
 const aboutContainer = document.getElementById('about-section');
-        const timelineSections = document.querySelectorAll('.timeline-section');
-        const sidebarItems = document.querySelectorAll('.sidebar-item');
+const timelineSections = document.querySelectorAll('.timeline-section');
+const sidebarItems = document.querySelectorAll('.sidebar-item');
 
-        const options = {
-            root: null, // use the viewport as the root
-            rootMargin: '0px',
-            threshold: 0.5 // trigger when 50% of the item is visible
-        };
+const options = {
+    root: null, // use the viewport as the root
+    rootMargin: '0px',
+    threshold: 0.5 // trigger when 50% of the item is visible
+};
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                const id = entry.target.getAttribute('id');
-                const sidebarItem = document.querySelector(`.sidebar-item[data-section="${id}"]`);
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const sidebarItem = document.querySelector(`.sidebar-item[data-section="${id}"]`);
 
-                if (entry.isIntersecting) {
-                    // Remove 'active' class from all sidebar items
-                    sidebarItems.forEach(item => item.classList.remove('active'));
-                    // Add 'active' class to the current one
-                    sidebarItem.classList.add('active');
-                }
-            });
-        }, options);
+        // Add this check to prevent the error
+        if (sidebarItem && entry.isIntersecting) {
+            // Remove 'active' class from all sidebar items
+            sidebarItems.forEach(item => item.classList.remove('active'));
+            // Add 'active' class to the current one
+            sidebarItem.classList.add('active');
+        }
+    });
+}, options);
 
-        timelineSections.forEach(section => {
-            observer.observe(section);
-        });
-
-        // Optional: Smooth scroll on sidebar item click
-        sidebarItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                const targetId = e.currentTarget.getAttribute('data-section');
-                const targetSection = document.getElementById(targetId);
-                targetSection.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
+timelineSections.forEach(section => {
+    observer.observe(section);
+});
 
 
 // A simple array of objects to store your project data
@@ -226,21 +218,6 @@ const createProjectCard = (project) => {
   githubLink.appendChild(githubIcon);
   githubLink.innerHTML += " View Code";
   links.appendChild(githubLink);
-  content.appendChild(links);
-
-  // view live project link (if available)
-  if (project.liveLink) {
-    const liveLink = document.createElement('a');
-    liveLink.classList.add('link', 'live-link');
-    liveLink.href = project.liveLink;
-    liveLink.target = "_blank";
-    const liveIcon = document.createElement('img');
-    liveIcon.src = "assets/icons/bi_box-arrow-up-right.svg";
-    liveIcon.alt = "Live Icon";
-    liveLink.appendChild(liveIcon);
-    liveLink.innerHTML += " Live Demo";
-    links.appendChild(liveLink);
-  }
   content.appendChild(links);
 
   card.appendChild(mediaContainer);
