@@ -123,7 +123,6 @@ const projects = [
     },
     githubLink: "https://github.com/yourusername/weather-app"
   },
-  // Add more projects here
   {
     title: "Project 3",
     description: "Description for Project 3.",
@@ -133,23 +132,45 @@ const projects = [
       src: "assets/video/video_1.mp4"
     },
     githubLink: "https://github.com/yourusername/project3"
+  },
+  {
+    title: "Project 4",
+    description: "Description for Project 4.",
+    techStack: "HTML, CSS, JavaScript, React",
+    media: {
+      type: "video",
+      src: "assets/video/video_1.mp4"
+    },
+    githubLink: "https://github.com/yourusername/project4"
+  },
+  {
+    title: "Project 5",
+    description: "Description for Project 5.",
+    techStack: "HTML, CSS, JavaScript, React",
+    media: {
+      type: "video",
+      src: "assets/video/video_1.mp4"
+    },
+    githubLink: "https://github.com/yourusername/project5"
   }
 ];
 
-// Get the container element where cards will be placed
+// Get the container and button elements
 const cardContainer = document.querySelector('.card-container');
+const viewMoreBtn = document.querySelector('.view-more-button');
+
+let projectsToShow = 2; // The initial number of projects to display
+let projectsIncrement = 2; // How many projects to add with each click
 
 // A function to create the HTML for a single project card
 const createProjectCard = (project) => {
-  // Create the main card div
+  // Your existing createProjectCard function remains the same
   const card = document.createElement('div');
   card.classList.add('project-card');
 
-  // Create the media container (video or image)
   const mediaContainer = document.createElement('div');
   mediaContainer.classList.add('project-card__image');
 
-  // Check the media type and create the appropriate element
   let mediaElement;
   if (project.media.type === 'video') {
     mediaElement = document.createElement('video');
@@ -162,76 +183,99 @@ const createProjectCard = (project) => {
     source.type = "video/mp4";
     mediaElement.appendChild(source);
 
-    // Add the event listener to handle iOS playback
     mediaElement.addEventListener('loadeddata', () => {
       mediaElement.play().catch(error => {
-        // Log the error but don't let it break the script
         console.log('Autoplay prevented:', error);
       });
     });
-
   } else {
     mediaElement = document.createElement('img');
     mediaElement.src = project.media.src;
     mediaElement.alt = project.title + " app";
   }
-  
-  mediaContainer.appendChild(mediaElement);
 
-  // Create the content container
+  mediaContainer.appendChild(mediaElement);
   const content = document.createElement('div');
   content.classList.add('project-card__content');
 
-  // Create and add the title
   const title = document.createElement('h3');
   title.classList.add('project-card__title');
   title.textContent = project.title;
   content.appendChild(title);
 
-  // Create and add the description
   const description = document.createElement('p');
   description.classList.add('project-card__description');
   description.textContent = project.description;
   content.appendChild(description);
 
-  // Create and add the tech stack
   const techStack = document.createElement('p');
   techStack.classList.add('project-card__techs');
   techStack.innerHTML = `<strong>Tech Stack:</strong> ${project.techStack}`;
   content.appendChild(techStack);
 
-  // Create and add the links section
   const links = document.createElement('div');
   links.classList.add('project-card__links');
-  
-  // Create and add the GitHub link
+
   const githubLink = document.createElement('a');
   githubLink.classList.add('link', 'code-link');
   githubLink.href = project.githubLink;
   githubLink.target = "_blank";
-  
   const githubIcon = document.createElement('img');
   githubIcon.src = "assets/icons/akar-icons_github-fill.svg";
   githubIcon.alt = "GitHub Icon";
-  
   githubLink.appendChild(githubIcon);
   githubLink.innerHTML += " View Code";
-  
   links.appendChild(githubLink);
   content.appendChild(links);
 
-  // Append all parts to the main card
+  // view live project link (if available)
+  if (project.liveLink) {
+    const liveLink = document.createElement('a');
+    liveLink.classList.add('link', 'live-link');
+    liveLink.href = project.liveLink;
+    liveLink.target = "_blank";
+    const liveIcon = document.createElement('img');
+    liveIcon.src = "assets/icons/bi_box-arrow-up-right.svg";
+    liveIcon.alt = "Live Icon";
+    liveLink.appendChild(liveIcon);
+    liveLink.innerHTML += " Live Demo";
+    links.appendChild(liveLink);
+  }
+  content.appendChild(links);
+
   card.appendChild(mediaContainer);
   card.appendChild(content);
 
   return card;
 };
 
-// Loop through the projects array and append each card to the container
-projects.forEach(project => {
-  const newCard = createProjectCard(project);
-  cardContainer.appendChild(newCard);
-});
+// A function to render a specified number of projects
+const renderProjects = (numToRender) => {
+  // Clear any existing projects before rendering
+  cardContainer.innerHTML = '';
+  // Loop through the projects array up to the specified number
+  for (let i = 0; i < numToRender && i < projects.length; i++) {
+    const newCard = createProjectCard(projects[i]);
+    cardContainer.appendChild(newCard);
+  }
+};
+
+// A function to handle the "View More" button click
+const handleViewMoreClick = () => {
+  projectsToShow += projectsIncrement; // Increase the number of projects to show
+  renderProjects(projectsToShow); // Re-render the projects
+
+  // Hide the button if all projects have been shown
+  if (projectsToShow >= projects.length) {
+    viewMoreBtn.style.display = 'none';
+  }
+};
+
+// Initial rendering of the first 2 projects
+renderProjects(projectsToShow);
+
+// Add the event listener to the "View More" button
+viewMoreBtn.addEventListener('click', handleViewMoreClick);
 
 
 

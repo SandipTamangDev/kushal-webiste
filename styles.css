@@ -70,8 +70,15 @@ body {
 }
 
 section {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
     padding: 2em 0;
+}
+
+@media (min-width: 768px) {
+    section {
+        margin-bottom: 100px;
+        padding: 3em 0;
+    }
 }
 
 .title {
@@ -99,11 +106,11 @@ section {
     border-radius: 20px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
 .btn:hover {
-    background-color: darken(var(--card-color), 0.5%);
+    transform: translate(0, -3px); 
 }
 
 
@@ -185,14 +192,14 @@ main {
 /* ... in your global CSS section, outside of any media queries ... */
 
 .desktop-nav-links a {
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.2s ease;
-  color: var(--primary-txt-color);
-  white-space: nowrap;
-  padding: 0.2em 0;
-  /* Use a transparent border to prevent layout shift on hover/active */
-  border-bottom: 2px solid transparent; 
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    color: var(--primary-txt-color);
+    white-space: nowrap;
+    padding: 0.2em 0;
+    /* Use a transparent border to prevent layout shift on hover/active */
+    border-bottom: 2px solid transparent; 
 }
 
 /* Correct rule for hover and active states */
@@ -751,10 +758,6 @@ header {
         width: 50%;
         position: relative;
     }
-
-    /* .timeline-section {
-        min-height: 60vh; 
-    } */
 }
 
 
@@ -901,6 +904,14 @@ header {
 
 .projects__header {
     text-align: center;
+}
+
+.projects__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3em;
 }
 
 .card-container {
@@ -1186,77 +1197,21 @@ header {
     width: 100%;
 }
 
-.footer__top {
+.footer__container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 2em;
     flex-direction: column;
     gap: 2em;
-}
-
-.footer__contact {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1em;
-    flex-direction: column;
+    justify-content: center;
 }
 
-.footer__socials {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-}
 
-.footer__bottom {
-    padding-top: 2em;
-    color: #666;
-    text-align: center;
-}
 
-.footer__credit {
-    width: 100%;
-}
-
-.footer__nav-links {
-    border-top: 1px solid #eee;
-}
-
-footer hr {
-    border: none;
-    background-color: #fff;
-    height: 1px;
-}
-
-@media (min-width: 1024px) {
-    .footer__top {
+@media (min-width: 768px) {
+    .footer__container {
         flex-direction: row;
-        gap: 2em;
-    }
-
-    .footer__contact {
-        flex-direction: row;
-        gap: 2em;
-    }
-
-    .footer__bottom {
-        display: flex;
-        align-items: center;
         justify-content: space-between;
     }
-
-    .footer__nav-links {
-        padding: 0;
-        border-top: none;
-        display: flex;
-        gap: 2em
-    }
-
-    .footer__nav-links a {
-        white-space: nowrap;
-    }
-
 }
 
 
