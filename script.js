@@ -5,259 +5,235 @@ const mobileNavLinks = document.querySelectorAll(".mobile-nav-links a");
 
 // Toggle on click
 menuToggle.addEventListener("click", () => {
-  menuToggle.classList.toggle("active"); // animate bars
-  navbar.classList.toggle("active");     // toggle nav links
+    menuToggle.classList.toggle("active");
+    navbar.classList.toggle("active");
 });
 
 // screen light blur when menu is active
 menuToggle.addEventListener("click", () => {
-  if (navbar.classList.contains("active")) {
-    document.body.classList.add("blurred");
-  } else {
-    document.body.classList.remove("blurred");
-  }
+    if (navbar.classList.contains("active")) {
+        document.body.classList.add("blurred");
+    } else {
+        document.body.classList.remove("blurred");
+    }
 });
 
 // Auto-close on resize above 768px
 window.addEventListener("resize", () => {
-  if (window.innerWidth > 768) {
-    menuToggle.classList.remove("active");
-    navbar.classList.remove("active");
-  }
+    if (window.innerWidth > 768) {
+        menuToggle.classList.remove("active");
+        navbar.classList.remove("active");
+    }
 });
 
 // Auto-close on scroll
 window.addEventListener("scroll", () => {
-  menuToggle.classList.remove("active");
-  navbar.classList.remove("active");
+    menuToggle.classList.remove("active");
+    navbar.classList.remove("active");
 });
 
 // Close on link click
 mobileNavLinks.forEach(link => {
-  link.addEventListener("click", () => {
-    menuToggle.classList.remove("active");
-    navbar.classList.remove("active");
-  });
+    link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        navbar.classList.remove("active");
+    });
 });
 
 //close on clicking outside the menu
 document.addEventListener("click", (event) => {
-  if (!navbar.contains(event.target) && !menuToggle.contains(event.target)) {
-    menuToggle.classList.remove("active");
-    navbar.classList.remove("active");
-  }
+    if (!navbar.contains(event.target) && !menuToggle.contains(event.target)) {
+        menuToggle.classList.remove("active");
+        navbar.classList.remove("active");
+    }
 });
 
 // Header Scroll Effect
 const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
 });
 
 
-
-// A simple array of objects to store your project data
+// Project Section Functionality
 const projects = [
-  {
-    title: "Calculator",
-    description: "A simple calculator built with HTML, CSS, and JavaScript.",
-    techStack: "HTML, CSS, JavaScript",
-    media: {
-      type: "video",
-      src: "assets/video/video_1.mp4"
+    {
+        title: "Calculator",
+        description: "A simple calculator built with HTML, CSS, and JavaScript.",
+        techStack: "HTML, CSS, JavaScript",
+        media: {
+            type: "video",
+            src: "assets/video/video_1.mp4"
+        },
+        githubLink: "https://github.com/yourusername/calculator"
     },
-    githubLink: "https://github.com/yourusername/calculator"
-  },
-  {
-    title: "Weather App",
-    description: "A weather app that fetches data from an API to display current weather details of different locations.",
-    techStack: "HTML, CSS, JavaScript, API",
-    media: {
-      type: "video",
-      src: "assets/video/video_1.mp4"
+    {
+        title: "Weather App",
+        description: "A weather app that fetches data from an API to display current weather details of different locations.",
+        techStack: "HTML, CSS, JavaScript, API",
+        media: {
+            type: "video",
+            src: "assets/video/video_1.mp4"
+        },
+        githubLink: "https://github.com/yourusername/weather-app"
     },
-    githubLink: "https://github.com/yourusername/weather-app"
-  },
-  {
-    title: "Project 3",
-    description: "Description for Project 3.",
-    techStack: "HTML, CSS, JavaScript, React",
-    media: {
-      type: "video",
-      src: "assets/video/video_1.mp4"
+    {
+        title: "Project 3",
+        description: "Description for Project 3.",
+        techStack: "HTML, CSS, JavaScript, React",
+        media: {
+            type: "video",
+            src: "assets/video/video_1.mp4"
+        },
+        githubLink: "https://github.com/yourusername/project3"
     },
-    githubLink: "https://github.com/yourusername/project3"
-  },
-  {
-    title: "Project 4",
-    description: "Description for Project 4.",
-    techStack: "HTML, CSS, JavaScript, React",
-    media: {
-      type: "video",
-      src: "assets/video/video_1.mp4"
+    {
+        title: "Project 4",
+        description: "Description for Project 4.",
+        techStack: "HTML, CSS, JavaScript, React",
+        media: {
+            type: "video",
+            src: "assets/video/video_1.mp4"
+        },
+        githubLink: "https://github.com/yourusername/project4"
     },
-    githubLink: "https://github.com/yourusername/project4"
-  },
-  {
-    title: "Project 5",
-    description: "Description for Project 5.",
-    techStack: "HTML, CSS, JavaScript, React",
-    media: {
-      type: "video",
-      src: "assets/video/video_1.mp4"
-    },
-    githubLink: "https://github.com/yourusername/project5"
-  }
+    {
+        title: "Project 5",
+        description: "Description for Project 5.",
+        techStack: "HTML, CSS, JavaScript, React",
+        media: {
+            type: "video",
+            src: "assets/video/video_1.mp4"
+        },
+        githubLink: "https://github.com/yourusername/project5"
+    }
 ];
 
-// Get the container and button elements
 const cardContainer = document.querySelector('.card-container');
 const viewMoreBtn = document.querySelector('.view-more-button');
 
-let projectsToShow = 2; // The initial number of projects to display
-let projectsIncrement = 2; // How many projects to add with each click
+let projectsToShow = 2;
+let projectsIncrement = 2;
 
-// A function to create the HTML for a single project card
 const createProjectCard = (project) => {
-  // Your existing createProjectCard function remains the same
-  const card = document.createElement('div');
-  card.classList.add('project-card');
+    const card = document.createElement('div');
+    card.classList.add('project-card');
 
-  const mediaContainer = document.createElement('div');
-  mediaContainer.classList.add('project-card__image');
+    const mediaContainer = document.createElement('div');
+    mediaContainer.classList.add('project-card__image');
 
-  let mediaElement;
-  if (project.media.type === 'video') {
-    mediaElement = document.createElement('video');
-    mediaElement.autoplay = true;
-    mediaElement.loop = true;
-    mediaElement.muted = true;
-    mediaElement.playsinline = true;
-    const source = document.createElement('source');
-    source.src = project.media.src;
-    source.type = "video/mp4";
-    mediaElement.appendChild(source);
+    let mediaElement;
+    if (project.media.type === 'video') {
+        mediaElement = document.createElement('video');
+        mediaElement.autoplay = true;
+        mediaElement.loop = true;
+        mediaElement.muted = true;
+        mediaElement.playsinline = true;
+        mediaElement.setAttribute('playsinline', '');
+        mediaElement.setAttribute('preload', 'auto');
 
-    mediaElement.addEventListener('loadeddata', () => {
-      mediaElement.play().catch(error => {
-        console.log('Autoplay prevented:', error);
-      });
-    });
-  } else {
-    mediaElement = document.createElement('img');
-    mediaElement.src = project.media.src;
-    mediaElement.alt = project.title + " app";
-  }
+        const source = document.createElement('source');
+        source.src = project.media.src;
+        source.type = "video/mp4";
+        mediaElement.appendChild(source);
 
-  mediaContainer.appendChild(mediaElement);
-  const content = document.createElement('div');
-  content.classList.add('project-card__content');
+        mediaElement.addEventListener('loadedmetadata', () => {
+            mediaElement.play().catch(error => {
+                console.log('Autoplay prevented:', error);
+            });
+        });
+    } else {
+        mediaElement = document.createElement('img');
+        mediaElement.src = project.media.src;
+        mediaElement.alt = project.title + " app";
+    }
 
-  const title = document.createElement('h3');
-  title.classList.add('project-card__title');
-  title.textContent = project.title;
-  content.appendChild(title);
+    mediaContainer.appendChild(mediaElement);
+    const content = document.createElement('div');
+    content.classList.add('project-card__content');
 
-  const description = document.createElement('p');
-  description.classList.add('project-card__description');
-  description.textContent = project.description;
-  content.appendChild(description);
+    const title = document.createElement('h3');
+    title.classList.add('project-card__title');
+    title.textContent = project.title;
+    content.appendChild(title);
 
-  const techStack = document.createElement('p');
-  techStack.classList.add('project-card__techs');
-  techStack.innerHTML = `<strong>Tech Stack:</strong> ${project.techStack}`;
-  content.appendChild(techStack);
+    const description = document.createElement('p');
+    description.classList.add('project-card__description');
+    description.textContent = project.description;
+    content.appendChild(description);
 
-  const links = document.createElement('div');
-  links.classList.add('project-card__links');
+    const techStack = document.createElement('p');
+    techStack.classList.add('project-card__techs');
+    techStack.innerHTML = `<strong>Tech Stack:</strong> ${project.techStack}`;
+    content.appendChild(techStack);
 
-  const githubLink = document.createElement('a');
-  githubLink.classList.add('link', 'code-link');
-  githubLink.href = project.githubLink;
-  githubLink.target = "_blank";
-  const githubIcon = document.createElement('img');
-  githubIcon.src = "assets/icons/akar-icons_github-fill.svg";
-  githubIcon.alt = "GitHub Icon";
-  githubLink.appendChild(githubIcon);
-  githubLink.innerHTML += " View Code";
-  links.appendChild(githubLink);
-  content.appendChild(links);
+    const links = document.createElement('div');
+    links.classList.add('project-card__links');
 
-  card.appendChild(mediaContainer);
-  card.appendChild(content);
+    const githubLink = document.createElement('a');
+    githubLink.classList.add('link', 'code-link');
+    githubLink.href = project.githubLink;
+    githubLink.target = "_blank";
+    const githubIcon = document.createElement('img');
+    githubIcon.src = "assets/icons/akar-icons_github-fill.svg";
+    githubIcon.alt = "GitHub Icon";
+    githubLink.appendChild(githubIcon);
+    githubLink.innerHTML += " View Code";
+    links.appendChild(githubLink);
+    content.appendChild(links);
 
-  return card;
+    card.appendChild(mediaContainer);
+    card.appendChild(content);
+
+    return card;
 };
 
-// A function to render a specified number of projects
 const renderProjects = (numToRender) => {
-  // Clear any existing projects before rendering
-  cardContainer.innerHTML = '';
-  // Loop through the projects array up to the specified number
-  for (let i = 0; i < numToRender && i < projects.length; i++) {
-    const newCard = createProjectCard(projects[i]);
-    cardContainer.appendChild(newCard);
-  }
+    cardContainer.innerHTML = '';
+    for (let i = 0; i < numToRender && i < projects.length; i++) {
+        const newCard = createProjectCard(projects[i]);
+        cardContainer.appendChild(newCard);
+    }
 };
 
-// A function to handle the "View More" button click
 const handleViewMoreClick = () => {
-  projectsToShow += projectsIncrement; // Increase the number of projects to show
-  renderProjects(projectsToShow); // Re-render the projects
+    projectsToShow += projectsIncrement;
+    renderProjects(projectsToShow);
 
-  // Hide the button if all projects have been shown
-  if (projectsToShow >= projects.length) {
-    viewMoreBtn.style.display = 'none';
-  }
+    if (projectsToShow >= projects.length) {
+        viewMoreBtn.style.display = 'none';
+    }
 };
 
-// Initial rendering of the first 2 projects
 renderProjects(projectsToShow);
-
-// Add the event listener to the "View More" button
 viewMoreBtn.addEventListener('click', handleViewMoreClick);
 
 
-
-
-
-// Get all the sections with an ID
+// Desktop Navigation Active State
 const sections = document.querySelectorAll('section[id]');
-// Get all the desktop navigation links
 const desktopNavLinks = document.querySelectorAll('.desktop-nav-links a');
 
-// Function to handle the active state
 function activateNavLink() {
-    // Get the current scroll position
     const scrollY = window.pageYOffset;
-
-    // Loop through each section
     sections.forEach(current => {
         const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 60; // Adjust for the fixed header height
+        const sectionTop = current.offsetTop - 60;
         const sectionId = current.getAttribute('id');
 
-        // Check if the current scroll position is within a section
-        if (
-            scrollY > sectionTop &&
-            scrollY <= sectionTop + sectionHeight
-        ) {
-            // Remove 'active' class from all links
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             desktopNavLinks.forEach(link => link.classList.remove('active'));
-
-            // Add 'active' class to the link that matches the current section's ID
-            document.querySelector('.desktop-nav-links a[href*=' + sectionId + ']').classList.add('active');
+            const matchingLink = document.querySelector(`.desktop-nav-links a[href*='${sectionId}']`);
+            if (matchingLink) {
+                matchingLink.classList.add('active');
+            }
         }
     });
 }
 
-// Attach the function to the scroll event
 window.addEventListener('scroll', activateNavLink);
-
-// Run the function on page load to set the initial active link
 document.addEventListener('DOMContentLoaded', activateNavLink);
