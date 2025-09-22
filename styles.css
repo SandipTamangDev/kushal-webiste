@@ -718,6 +718,8 @@ header {
     border-bottom: 1px solid #ddd;
     background-color: var(--card-color);
     padding: 1.25em;
+    border-radius: 5px;
+
 }
 
 .timeline-section h3 {
@@ -947,11 +949,26 @@ header {
 
 .project-card {
     color: #333;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     background-color: var(--card-color);
     margin-bottom: 1em;
     transition: 0.3s ease-in-out;
-    /* height: 60vh; */
+    border-radius: 5px; 
+}
+
+.project-card:hover {
+    transform: translate(0, -5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+video {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
 .project-card__content {
@@ -972,11 +989,6 @@ header {
 
 .card-container p {
     margin-bottom: 5px;
-}
-
-.project-card:hover {
-    transform: translate(0, -5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .projects .link {
